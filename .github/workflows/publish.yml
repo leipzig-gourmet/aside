@@ -7,7 +7,6 @@ on:
 permissions:
   id-token: write
   contents: read
-  packages: write
 
 jobs:
   test:
@@ -60,6 +59,8 @@ jobs:
   publish-gh:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -73,3 +74,5 @@ jobs:
         run: npm ci
       - name: Publish package
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
