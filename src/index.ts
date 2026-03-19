@@ -39,15 +39,15 @@ const cli = meow(
     flags: {
       title: {
         type: 'string',
-        alias: 't',
+        shortFlag: 't',
       },
       yes: {
         type: 'boolean',
-        alias: 'y',
+        shortFlag: 'y',
       },
       no: {
         type: 'boolean',
-        alias: 'n',
+        shortFlag: 'n',
       },
     },
   }
