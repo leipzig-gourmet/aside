@@ -47,7 +47,7 @@ Here are the main features:
 The simplest way to get started is:
 
 ```
-npx @google/aside init
+npx @leipzig-gourmet/aside init
 ```
 
 ## What it does
@@ -117,7 +117,3 @@ import './path/to/module';
 ```
 
 This will ensure that Rollup will not remove it from the bundle.
-
-## Disclaimer
-
-This is not an officially supported Google product.
