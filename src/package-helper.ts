@@ -27,7 +27,7 @@ export interface PackageInstallResult {
 
 /** The default package.json path in the current working directory. */
 export const DEFAULT_PACKAGE_JSON_PATH = './package.json';
-const DEFAULT_PACKAGE_JSON_CONTENT: PackageJson = {
+const DEFAULT_PACKAGE_JSON_CONTENT = {
   name: '',
   version: '0.0.0',
   description: '',
@@ -38,7 +38,7 @@ const DEFAULT_PACKAGE_JSON_CONTENT: PackageJson = {
   engines: {
     node: '>=22',
   },
-};
+} satisfies PackageJson;
 
 /**
  * Reformats an arbitrary string into a lower-case-dashed package name.
@@ -235,12 +235,15 @@ export class PackageHelper {
    * @returns {PackageHelper} a package helper with the current package.json
    *  information.
    */
-  static init(name: string, path = DEFAULT_PACKAGE_JSON_PATH) {
+  static init(
+    name: string,
+    path: string = DEFAULT_PACKAGE_JSON_PATH
+  ): PackageHelper {
     return new PackageHelper(
       {
         ...DEFAULT_PACKAGE_JSON_CONTENT,
         name: toPackageName(name),
-      },
+      } as PackageJson,
       path
     );
   }

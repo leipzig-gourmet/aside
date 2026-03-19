@@ -82,13 +82,15 @@ export async function handlePackageJson(options: Options) {
         false,
         options
       );
-      if (replace) {
+      if (replace && script) {
         packageJson.updateScript(name, script);
         needsSave = true;
       }
     } else {
-      packageJson.updateScript(name, script);
-      needsSave = true;
+      if (script) {
+        packageJson.updateScript(name, script);
+        needsSave = true;
+      }
     }
   }
 
